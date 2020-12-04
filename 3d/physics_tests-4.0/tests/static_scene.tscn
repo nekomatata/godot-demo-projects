@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/robot_head/godot3_robot_head_collision.tres" type="Shape3D" id=1]
+[ext_resource path="res://assets/robot_head/godot3_robot_head.mesh" type="ArrayMesh" id=2]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="ConcavePolygonShape3D" id=2]
+data = PackedVector3Array( -1, 0, 1, 1, 0, -1, 1, 0, 1, -1, 0, 1, -1, 0, -1, 1, 0, -1 )
+
+[node name="StaticScene" type="Node3D"]
+script = null
+
+[node name="StaticBodyPlane" type="StaticBody3D" parent="."]
+script = null
+
+[node name="MeshInstance" type="MeshInstance3D" parent="StaticBodyPlane"]
+transform = Transform( 50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+script = null
+
+[node name="CollisionShape" type="CollisionShape3D" parent="StaticBodyPlane"]
+transform = Transform( 50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0 )
+shape = SubResource( 2 )
+script = null
+
+[node name="StaticBodyHead" type="StaticBody3D" parent="."]
+transform = Transform( 10, 0, 0, 0, 8.66025, 5, 0, -5, 8.66025, 0, -11.1389, 2.29332 )
+script = null
+
+[node name="RobotHead" type="MeshInstance3D" parent="StaticBodyHead"]
+mesh = ExtResource( 2 )
+script = null
+
+[node name="CollisionShape" type="CollisionShape3D" parent="StaticBodyHead"]
+shape = ExtResource( 1 )
+script = null
