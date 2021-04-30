@@ -7,6 +7,9 @@ const BOX_SPACE = Vector2(50, 50)
 export(int, 1, 1000) var row_size = 100
 export(int, 1, 1000) var column_size = 100
 
+export(Vector2) var size_randomize
+export(Vector2) var spawn_randomize
+
 var _objects = []
 
 var _log_physics = false
@@ -102,10 +105,21 @@ func _create_objects():
 		var pos_y = -0.5 * (column_size - 1) * BOX_SPACE.y
 
 		for column in column_size:
+			var size = BOX_SIZE
+
+			if size_randomize != Vector2.ZERO:
+				size.x += randf() * size_randomize.x
+				size.y += randf() * size_randomize.y
+
 			# Create a new object and shape every time to avoid the overhead of connecting many bodies to the same shape.
-			var box = create_rigidbody_box(BOX_SIZE)
+			var box = create_rigidbody_box(size)
 			box.gravity_scale = 0.0
 			box.position = Vector2(pos_x, pos_y)
+
+			if spawn_randomize != Vector2.ZERO:
+				box.transform.origin.x += randf() * spawn_randomize.x
+				box.transform.origin.y += randf() * spawn_randomize.y
+
 			_objects.push_back(box)
 
 			pos_y += BOX_SPACE.y

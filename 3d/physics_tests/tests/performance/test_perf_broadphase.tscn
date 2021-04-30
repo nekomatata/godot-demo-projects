@@ -8,5 +8,10 @@ _enable_debug_collision = false
 row_size = 50
 column_size = 50
 depth_size = 50
+size_randomize2 = Vector3( 4, 4, 4 )
+spawn_randomize2 = Vector3( 2, 2, 2 )
 
 [node name="Objects" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.2358 )
