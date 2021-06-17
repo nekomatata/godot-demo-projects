@@ -72,6 +72,9 @@ script = ExtResource( 6 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource( 2 )
 
+[node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
+position = Vector2( 0, -150 )
+
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 position = Vector2( 100, 450 )
 collision_mask = 2147483649
@@ -79,6 +82,11 @@ script = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 shape = SubResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
+position = Vector2( 0, -150 )
+drag_margin_left = 0.0
+drag_margin_right = 1.0
 
 [node name="KinematicBodyRay2D" type="KinematicBody2D" parent="."]
 position = Vector2( 100, 450 )
@@ -93,10 +101,20 @@ shape = SubResource( 4 )
 position = Vector2( 0, -16 )
 shape = SubResource( 5 )
 
+[node name="Camera2D" type="Camera2D" parent="KinematicBodyRay2D"]
+position = Vector2( 0, -150 )
+drag_margin_left = 0.0
+drag_margin_right = 1.0
+
 [node name="StaticSceneFlat" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, 12 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+visible = false
 polygon = PoolVector2Array( 171.04, 529.248, 379.275, 294.316, 506.084, 429.135, 648.26, 322.058, 868.746, 322.058, 985.282, 36.6919, 1242.91, 531.917 )
+disabled = true
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 171.04, 529.248, 430.844, 494.162, 545.266, 464.497, 678.758, 415.762, 778.348, 362.789, 884.294, 292.864, 945.743, 233.534, 988.121, 159.372, 992.359, 4.69031, 1242.91, 531.917 )

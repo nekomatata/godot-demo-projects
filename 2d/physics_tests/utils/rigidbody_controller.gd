@@ -63,3 +63,7 @@ func _integrate_forces(state):
 
 func is_on_floor():
 	return _on_floor
+
+
+func get_floor_angle():
+	return 0.0

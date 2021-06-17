@@ -71,7 +71,8 @@ func _process(_delta):
 	var label_floor = $LabelFloor
 	if _moving_body:
 		if _moving_body.is_on_floor():
-			label_floor.text = "ON FLOOR"
+			var angle = round(rad2deg(_moving_body.get_floor_angle()))
+			label_floor.text = "ON FLOOR (%d°)" % angle
 			label_floor.self_modulate = Color.green
 		else:
 			label_floor.text = "OFF FLOOR"
@@ -148,6 +149,10 @@ func _start_test():
 	test_label += template.name
 	_moving_body = template.duplicate()
 	_body_parent.add_child(_moving_body)
+
+	#var camera = _moving_body.get_node_or_null("Camera2D")
+	#if camera:
+	#	camera.current = true
 
 	_moving_body._initial_velocity = _initial_velocity
 	_moving_body._constant_velocity = _constant_velocity

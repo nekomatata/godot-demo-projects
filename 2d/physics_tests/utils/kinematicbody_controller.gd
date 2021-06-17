@@ -53,3 +53,8 @@ func _physics_process(_delta):
 	# Get next jump ready.
 	if _jumping:
 		_jumping = false
+
+
+func get_floor_angle():
+	var angle_rad = -Vector2.UP.angle_to(get_floor_normal())
+	return angle_rad
